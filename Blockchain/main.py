@@ -36,14 +36,17 @@ if __name__ == "__main__":
         print("\n")
 
         if choice == "1":
-            data = input("Enter the data: ")
-            print("\n")
             last_block = blockchain.get_last_block()
-            added_block = blockchain.add_block(
-                Block(last_block.index + 1, data, last_block.hash)
-            )
-            print("Block Added:\n")
-            print(added_block)
+            if last_block.is_valid(blockchain.difficulty):
+                data = input("Enter the data: ")
+                print("\n")
+                added_block = blockchain.add_block(
+                    Block(last_block.index + 1, data, last_block.hash)
+                )
+                print("Block Added:\n")
+                print(added_block)
+            else:
+                print("Invalid last block!!!\n")
 
         elif choice == "2":
             print("Printing the current Blockchain...\n")
