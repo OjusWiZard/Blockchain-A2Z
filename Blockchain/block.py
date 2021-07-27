@@ -5,7 +5,7 @@ from hashlib import sha256
 class Block:
     def __init__(self, index: int, data: str, previous_hash: str):
         self.index = index
-        self.timestamp = datetime.timestamp(datetime.utcnow())
+        self.timestamp = int(datetime.timestamp(datetime.utcnow()))
         self.data = data
         self.previous_hash = previous_hash
         self.nonce = 0
@@ -19,7 +19,7 @@ class Block:
     def mine_block(self, difficulty: int):
         print("Mining...")
         while self.hash[:difficulty] != "0" * difficulty:
-            current_timestamp = datetime.timestamp(datetime.utcnow())
+            current_timestamp = int(datetime.timestamp(datetime.utcnow()))
             if self.timestamp != current_timestamp:
                 self.timestamp = current_timestamp
                 self.nonce = 0
@@ -48,7 +48,7 @@ class Block:
 
     def populate_from_list(self, block_as_list: list):
         self.index = int(block_as_list[0])
-        self.timestamp = float(block_as_list[1])
+        self.timestamp = int(block_as_list[1])
         self.data = block_as_list[2]
         self.previous_hash = block_as_list[3]
         self.nonce = int(block_as_list[4])

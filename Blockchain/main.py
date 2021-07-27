@@ -18,7 +18,7 @@ if __name__ == "__main__":
         if show_everytime:
             print("Current Blockchain: \n")
             print("Index", end="\t")
-            print("Timestamp", end="\t\t\t")
+            print("Timestamp", end="\t\t")
             print("Data".ljust(16), end="\t")
             print("Previous Hash".ljust(16), end="\t")
             print("Nonce".ljust(16), end="\t")
