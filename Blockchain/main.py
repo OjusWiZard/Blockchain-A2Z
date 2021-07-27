@@ -37,6 +37,8 @@ if __name__ == "__main__":
 
         if choice == "1":
             last_block = blockchain.get_last_block()
+            if not last_block:
+                last_block = blockchain.add_block(blockchain.genesis_block())
             if last_block.is_valid(blockchain.difficulty):
                 data = input("Enter the data: ")
                 print("\n")

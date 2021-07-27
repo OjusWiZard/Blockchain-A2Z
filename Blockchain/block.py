@@ -1,6 +1,5 @@
 from datetime import datetime
 from hashlib import sha256
-from random import randint
 
 
 class Block:
@@ -20,7 +19,11 @@ class Block:
     def mine_block(self, difficulty: int):
         print("Mining...")
         while self.hash[:difficulty] != "0" * difficulty:
-            self.nonce = randint(0, 1000000000)
+            current_timestamp = datetime.timestamp(datetime.utcnow())
+            if self.timestamp != current_timestamp:
+                self.timestamp = current_timestamp
+                self.nonce = 0
+            self.nonce += 1
             self.hash = self.hash_block()
         return self
 
