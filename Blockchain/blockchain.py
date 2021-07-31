@@ -4,7 +4,7 @@ from block import Block
 
 
 class Blockchain:
-    def __init__(self, blocks_filename="blockchain.dat", difficulty=4):
+    def __init__(self, blocks_filename:str, difficulty=4):
         self.blocks_filename = blocks_filename
         self.difficulty = difficulty
         self.blocks_file_append = open(self.blocks_filename, "a")

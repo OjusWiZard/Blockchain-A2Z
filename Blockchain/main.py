@@ -10,7 +10,7 @@ def clear_screen():
 
 if __name__ == "__main__":
 
-    blockchain = Blockchain()
+    blockchain = Blockchain(blocks_filename="Blockchain/blockchain.dat")
     show_everytime = False
     while True:
         clear_screen()
