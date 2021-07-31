@@ -20,11 +20,11 @@ class Blockchain:
         genesis_block.mine_block(self.difficulty)
         return genesis_block
 
-    def add_block(self, block: Block) -> Block:
+    def add_block(self, data) -> Block:
         last_block = self.get_last_block()
-        if last_block is not None:
-            if last_block.hash != block.previous_hash:
-                raise ValueError("Previous hash does not match")
+        if not last_block:
+            last_block = self.genesis_block()
+        block = Block(last_block.index + 1, data, last_block.hash)
         block.mine_block(self.difficulty)
         self.blocks_writer.writerow(block.to_list(include_hash=True))
         self.blocks_file_append.flush()
