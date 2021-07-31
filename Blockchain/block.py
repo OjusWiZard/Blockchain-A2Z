@@ -3,7 +3,7 @@ from hashlib import sha256
 
 
 class Block:
-    def __init__(self, index: int, data: str, previous_hash: str):
+    def __init__(self, index: int, data, previous_hash: str):
         self.index = index
         self.timestamp = int(datetime.timestamp(datetime.utcnow()))
         self.data = data
