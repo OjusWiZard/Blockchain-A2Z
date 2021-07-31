@@ -25,7 +25,8 @@ class Blockchain:
         if not last_block:
             last_block = self.genesis_block()
         block = Block(last_block.index + 1, data, last_block.hash)
-        block.mine_block(self.difficulty)
+        if not block.mine_block(self.difficulty):
+            return None
         self.blocks_writer.writerow(block.to_list(include_hash=True))
         self.blocks_file_append.flush()
         return block

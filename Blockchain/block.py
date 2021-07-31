@@ -24,6 +24,9 @@ class Block:
                 self.timestamp = current_timestamp
                 self.nonce = 0
             self.nonce += 1
+            if self.nonce > 1000000000:
+                print("Failed to mine block")
+                return False
             self.hash = self.hash_block()
         return self
 
