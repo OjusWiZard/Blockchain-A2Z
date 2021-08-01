@@ -1,6 +1,5 @@
 from os import system, name
 
-from block import Block
 from blockchain import Blockchain
 
 
