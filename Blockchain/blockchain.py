@@ -13,11 +13,10 @@ class Blockchain:
         self.blocks_reader = reader(self.blocks_file_read, delimiter="|")
 
         if self.get_last_block() is None:
-            self.add_block(self.genesis_block())
+            self.add_block(self.genesis_block().data)
 
     def genesis_block(self) -> Block:
         genesis_block = Block(0, "This is just the Beginning", "0" * 64)
-        genesis_block.mine_block(self.difficulty)
         return genesis_block
 
     def add_block(self, data) -> Block:
