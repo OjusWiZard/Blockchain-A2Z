@@ -69,15 +69,11 @@ class Blockchain:
 
     def get_chain(self) -> list:
         self.blocks_reader = reader(open(self.blocks_filename, "r"), delimiter="|")
-        return [block for block in self.blocks_reader]
+        blocks_as_list = [block for block in self.blocks_reader]
+        return [Block(0, "temp", "0").populate_from_list(blocks_as_list)]
 
     def __str__(self):
-        str_blockchain = ""
-        for block in self.get_chain():
-            str_blockchain += (
-                str(Block(0, "temp", "0").populate_from_list(block)) + "\n"
-            )
-        return str_blockchain
+        return " ".join(self.get_chain())
 
     def __del__(self):
         self.blocks_file_append.close()
