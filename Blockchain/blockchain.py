@@ -1,6 +1,6 @@
 from csv import reader, writer
 
-from block import Block
+from Blockchain.block import Block
 
 
 class Blockchain:
@@ -70,10 +70,10 @@ class Blockchain:
     def get_chain(self) -> list:
         self.blocks_reader = reader(open(self.blocks_filename, "r"), delimiter="|")
         blocks_as_list = [block for block in self.blocks_reader]
-        return [Block(0, "temp", "0").populate_from_list(blocks_as_list)]
+        return [Block(0, "temp", "0").populate_from_list(block_as_list) for block_as_list in blocks_as_list]
 
     def __str__(self):
-        return " ".join(self.get_chain())
+        return "\n".join([str(block) for block in self.get_chain()])
 
     def __del__(self):
         self.blocks_file_append.close()
