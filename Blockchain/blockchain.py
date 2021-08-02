@@ -4,7 +4,7 @@ from Blockchain.block import Block
 
 
 class Blockchain:
-    def __init__(self, blocks_filename:str, difficulty=4):
+    def __init__(self, blocks_filename: str, difficulty=4):
         self.blocks_filename = blocks_filename
         self.difficulty = difficulty
         self.blocks_file_append = open(self.blocks_filename, "a")
@@ -69,7 +69,10 @@ class Blockchain:
     def get_chain(self) -> list:
         self.blocks_reader = reader(open(self.blocks_filename, "r"), delimiter="|")
         blocks_as_list = [block for block in self.blocks_reader]
-        return [Block(0, "temp", "0").populate_from_list(block_as_list) for block_as_list in blocks_as_list]
+        return [
+            Block(0, "temp", "0").populate_from_list(block_as_list)
+            for block_as_list in blocks_as_list
+        ]
 
     def __str__(self):
         return "\n".join([str(block) for block in self.get_chain()])
