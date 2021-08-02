@@ -130,3 +130,6 @@ dmypy.json
 
 # VS code settings
 .vscode/
+
+CryptoCurrency/private_key.pem
+CryptoCurrency/dest_pub.pem
